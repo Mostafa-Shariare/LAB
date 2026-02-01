@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-MOOC | Next-Gen Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i> AI-MOOC
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active" onclick="showSection('home')">Home</a></li>
+                <li><a href="#" onclick="showSection('courses')">Courses</a></li>
+                <li><a href="#" onclick="showSection('features')">AI Features</a></li>
+                <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+                <li><a href="#" onclick="showSection('advisor')">AI Advisor</a></li>
+                <li><a href="#" onclick="showSection('about')">About</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- 1. Landing Page Section -->
+        <section id="home" class="content-section active">
+            <div class="hero">
+                <div class="hero-text">
+                    <h1>Learn Smarter with <span class="gradient-text">AI-Assisted</span> Online Courses</h1>
+                    <p>Experience a personalized learning journey powered by Artificial Intelligence. From
+                        auto-generated quizzes to 24/7 AI tutoring.</p>
+                    <div class="cta-group">
+                        <button class="btn btn-primary" onclick="showSection('courses')">Explore Courses</button>
+                        <button class="btn btn-secondary" onclick="showSection('features')">Try AI Tutor</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://img.freepik.com/free-vector/artificial-intelligence-concept-illustration_114360-7004.jpg"
+                        alt="AI Learning Illustration">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Courses Page Section -->
+        <section id="courses" class="content-section">
+            <div class="section-header">
+                <h2>Explore Our Courses</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Programming</button>
+                    <button class="filter-btn">Data Science</button>
+                    <button class="filter-btn">AI & ML</button>
+                    <button class="filter-btn">Soft Skills</button>
+                </div>
+            </div>
+            <div class="course-grid" id="course-container">
+                <!-- Course Cards injected by JS -->
+            </div>
+        </section>
+
+        <!-- 3. AI Features Page Section -->
+        <section id="features" class="content-section">
+            <div class="section-header">
+                <h2>AI-Powered Learning Tools</h2>
+            </div>
+            <div class="features-container">
+                <!-- AI Tutor Chat UI -->
+                <div class="feature-card chat-box">
+                    <h3><i class="fas fa-robot"></i> AI Tutor Chat</h3>
+                    <div class="chat-display" id="chat-display">
+                        <div class="msg bot">Hello! I'm your AI Tutor. How can I help you with your studies today?</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Ask a question about Python...">
+                        <button onclick="sendMockMessage()"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+                <!-- Learning Analytics -->
+                <div class="feature-card analytics">
+                    <h3><i class="fas fa-chart-line"></i> Learning Analytics</h3>
+                    <div class="chart-mock">
+                        <div class="bar-container">
+                            <label>Weekly Progress</label>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="bar-container">
+                            <label>Quiz Accuracy</label>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 72%;">72%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Quiz Generator -->
+                <div class="feature-card quiz-mock">
+                    <h3><i class="fas fa-pen-fancy"></i> AI Quiz Generator</h3>
+                    <p>Generate a practice quiz from your last lecture.</p>
+                    <div class="quiz-box">
+                        <p class="question">Q: What is the main purpose of a Neural Network?</p>
+                        <button class="quiz-opt">Data Storage</button>
+                        <button class="quiz-opt">Pattern Recognition</button>
+                    </div>
+                </div>
+
+                <!-- AI Code Reviewer -->
+                <div class="feature-card code-review">
+                    <h3><i class="fas fa-bug"></i> AI Code Reviewer</h3>
+                    <p>Get instant feedback on your code quality and potential bugs.</p>
+                    <div class="code-preview">
+                        <div class="code-line">def calculate_sum(a, b):</div>
+                        <div class="code-line error-line"> return a + b <span class="error-annotation"><i
+                                    class="fas fa-exclamation-circle"></i> Type hinting recommended</span></div>
+                    </div>
+                </div>
+
+                <!-- Smart Study Schedule -->
+                <div class="feature-card schedule">
+                    <h3><i class="fas fa-calendar-alt"></i> Smart Study Schedule</h3>
+                    <p>AI-optimized learning plan based on your availability.</p>
+                    <div class="schedule-mock">
+                        <div class="schedule-item active">
+                            <div class="time">10:00 AM</div>
+                            <div class="task">Python Basics</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="time">02:00 PM</div>
+                            <div class="task">Data Structures</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Style Assessment -->
+                <div class="feature-card learning-style">
+                    <h3><i class="fas fa-brain"></i> Style Assessment</h3>
+                    <p>Adapts content to your preferred learning style.</p>
+                    <div class="style-chart">
+                        <div class="style-bar visual" style="width: 70%"><span>Visual 70%</span></div>
+                        <div class="style-bar auditory" style="width: 45%"><span>Auditory 45%</span></div>
+                        <div class="style-bar kinesthetic" style="width: 80%"><span>Kinesthetic 80%</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Student Dashboard -->
+        <section id="dashboard" class="content-section">
+            <div class="dashboard-layout">
+                <aside class="sidebar">
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Alex+Student&background=4f46e5&color=fff"
+                            alt="Avatar">
+                        <h4>Alex Student</h4>
+                        <p>Premium Learner</p>
+                    </div>
+                </aside>
+                <div class="dash-main">
+                    <!-- Dashboard Stats Row -->
+                    <div class="dash-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(79, 70, 229, 0.1); color: var(--primary);"><i
+                                    class="fas fa-clock"></i></div>
+                            <div class="stat-info">
+                                <h3>12.5 hrs</h3>
+                                <p>Study Time</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(16, 185, 129, 0.1); color: #10b981;"><i
+                                    class="fas fa-check-circle"></i></div>
+                            <div class="stat-info">
+                                <h3>3</h3>
+                                <p>Completed</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;"><i
+                                    class="fas fa-fire"></i></div>
+                            <div class="stat-info">
+                                <h3>5 Days</h3>
+                                <p>Streak</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: rgba(236, 72, 153, 0.1); color: #ec4899;"><i
+                                    class="fas fa-trophy"></i></div>
+                            <div class="stat-info">
+                                <h3>1,250</h3>
+                                <p>XP Points</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Grid for Widgets -->
+                    <div class="dashboard-grid">
+                        <!-- Recent Activity -->
+                        <div class="dash-widget activity-widget">
+                            <div class="widget-header">
+                                <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                            </div>
+                            <ul class="activity-list">
+                                <li>
+                                    <div class="activity-icon"><i class="fas fa-play-circle"></i></div>
+                                    <div class="activity-details">
+                                        <p>Watched <strong>Python Basics: Variables</strong></p>
+                                        <small>2 hours ago</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon quiz"><i class="fas fa-question-circle"></i></div>
+                                    <div class="activity-details">
+                                        <p>Completed <strong>Intro Quiz</strong> (90%)</p>
+                                        <small>Yesterday</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="activity-icon"><i class="fas fa-check"></i></div>
+                                    <div class="activity-details">
+                                        <p>Finished <strong>Setup Environment</strong></p>
+                                        <small>2 days ago</small>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Upcoming Deadlines -->
+                        <div class="dash-widget deadlines-widget">
+                            <div class="widget-header">
+                                <h3><i class="fas fa-hourglass-half"></i> Up Next</h3>
+                            </div>
+                            <div class="deadline-item">
+                                <div class="date-box">
+                                    <span class="day">15</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="deadline-info">
+                                    <p>Python Final Project</p>
+                                    <small class="urgent">Due in 2 days</small>
+                                </div>
+                            </div>
+                            <div class="deadline-item">
+                                <div class="date-box">
+                                    <span class="day">20</span>
+                                    <span class="month">OCT</span>
+                                </div>
+                                <div class="deadline-info">
+                                    <p>Data Science Quiz</p>
+                                    <small>Due in 1 week</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="dash-widget achievements-widget">
+                            <div class="widget-header">
+                                <h3><i class="fas fa-medal"></i> Achievements</h3>
+                            </div>
+                            <div class="badges-grid">
+                                <div class="badge-item" title="7 Day Streak">
+                                    <img src="https://ui-avatars.com/api/?name=S+K&background=f59e0b&color=fff&rounded=true&bold=true"
+                                        alt="Streak King">
+                                    <small>Streak King</small>
+                                </div>
+                                <div class="badge-item" title="First Course Completed">
+                                    <img src="https://ui-avatars.com/api/?name=F+F&background=10b981&color=fff&rounded=true&bold=true"
+                                        alt="Fast Finisher">
+                                    <small>Fast Finisher</small>
+                                </div>
+                                <div class="badge-item" title="Top 10% on Quiz">
+                                    <img src="https://ui-avatars.com/api/?name=Q+W&background=6366f1&color=fff&rounded=true&bold=true"
+                                        alt="Quiz Whiz">
+                                    <small>Quiz Whiz</small>
+                                </div>
+                                <div class="badge-item locked" title="Locked: Complete 5 Courses">
+                                    <div class="locked-badge"><i class="fas fa-lock"></i></div>
+                                    <small>Master</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>My Enrolled Courses</h3>
+                    <div class="enrolled-list" id="enrolled-list">
+                        <!-- Enrolled items injected by JS -->
+                    </div>
+                    <div class="ask-ai-dash">
+                        <h4>Quick AI Assistant</h4>
+                        <div class="dash-chat">
+                            <input type="text" placeholder="Explain 'Recursion' briefly...">
+                            <button
+                                onclick="alert('AI Response: Recursion is a process where a function calls itself as a subroutine to solve smaller instances of the same problem.')">Ask</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. About Page Section -->
+        <section id="about" class="content-section">
+            <div class="about-container">
+                <h2><i class="fas fa-info-circle"></i> About AI-MOOC Platform</h2>
+                <p class="lead">A comprehensive AI-powered Massive Open Online Course (MOOC) platform that combines
+                    traditional online learning with cutting-edge artificial intelligence to deliver personalized,
+                    adaptive, and engaging educational experiences.</p>
+
+                <!-- Platform Overview -->
+                <div class="about-section">
+                    <h3><i class="fas fa-rocket"></i> Platform Overview</h3>
+                    <p>AI-MOOC is a next-generation online learning platform designed to revolutionize how students
+                        learn and progress through courses. Our platform integrates artificial intelligence at every
+                        level to provide personalized learning experiences, real-time feedback, and intelligent career
+                        guidance. With over <strong>86 comprehensive courses</strong> spanning multiple technology
+                        domains, AI-MOOC serves as a complete learning ecosystem for students, professionals, and career
+                        changers.</p>
+                </div>
+
+                <!-- Core Features -->
+                <div class="about-section">
+                    <h3><i class="fas fa-star"></i> Core Features & Functionality</h3>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-book"></i> 1. Comprehensive Course Catalog</h4>
+                        <ul>
+                            <li><strong>86+ Courses:</strong> Our platform offers an extensive library of courses
+                                covering all major technology domains</li>
+                            <li><strong>Course Categories:</strong>
+                                <ul>
+                                    <li><strong>Programming:</strong> Software development, web development, mobile
+                                        development, game development, cloud computing, DevOps, cybersecurity, and more
+                                    </li>
+                                    <li><strong>Data Science:</strong> Data analysis, statistics, visualization,
+                                        business intelligence, and big data fundamentals</li>
+                                    <li><strong>AI & ML:</strong> Machine learning, deep learning, neural networks,
+                                        natural language processing, computer vision, and AI ethics</li>
+                                    <li><strong>Soft Skills:</strong> UI/UX design, project management, communication,
+                                        and leadership</li>
+                                </ul>
+                            </li>
+                            <li><strong>Course Filtering System:</strong> Advanced filtering by category (All,
+                                Programming, Data Science, AI & ML, Soft Skills) with visually attractive filter buttons
+                            </li>
+                            <li><strong>Course Cards:</strong> Each course features:
+                                <ul>
+                                    <li>High-quality, unique images from Unsplash</li>
+                                    <li>Category badges with glassmorphism design</li>
+                                    <li>Interactive icon overlays on hover</li>
+                                    <li>Progress tracking with visual progress bars</li>
+                                    <li>Instructor information</li>
+                                    <li>Enrollment buttons with modern styling</li>
+                                </ul>
+                            </li>
+                            <li><strong>Empty State Handling:</strong> User-friendly messages when no courses match the
+                                selected filter</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-tachometer-alt"></i> 2. Student Dashboard</h4>
+                        <ul>
+                            <li><strong>User Profile Section:</strong> Displays student avatar, name, and membership
+                                status (Premium Learner)</li>
+                            <li><strong>Enrolled Courses List:</strong> Shows all courses with progress greater than 0%,
+                                including:
+                                <ul>
+                                    <li>Course title</li>
+                                    <li>Progress percentage</li>
+                                    <li>Continue button for each course</li>
+                                </ul>
+                            </li>
+                            <li><strong>Quick AI Assistant:</strong> Integrated AI chat interface for instant help with
+                                course-related questions</li>
+                            <li><strong>Responsive Layout:</strong> Sidebar navigation with main content area, optimized
+                                for all screen sizes</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-robot"></i> 3. AI Tutor Chat System</h4>
+                        <ul>
+                            <li><strong>24/7 AI Assistance:</strong> Always-available AI tutor that responds to student
+                                questions</li>
+                            <li><strong>Intelligent Responses:</strong> Context-aware answers based on keywords (Python,
+                                quiz, general queries)</li>
+                            <li><strong>Interactive Chat Interface:</strong>
+                                <ul>
+                                    <li>Message display area with user and bot message differentiation</li>
+                                    <li>Input field with placeholder text</li>
+                                    <li>Send button with paper plane icon</li>
+                                    <li>Auto-scrolling to latest messages</li>
+                                </ul>
+                            </li>
+                            <li><strong>Mock AI Responses:</strong> Simulated intelligent responses for demonstration
+                                purposes</li>
+                            <li><strong>Enter Key Support:</strong> Keyboard-friendly interaction (can be enhanced)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-chart-line"></i> 4. Learning Analytics Dashboard</h4>
+                        <ul>
+                            <li><strong>Weekly Progress Tracking:</strong> Visual bar charts showing completion
+                                percentage</li>
+                            <li><strong>Quiz Accuracy Metrics:</strong> Performance tracking for assessments</li>
+                            <li><strong>Visual Data Representation:</strong> Color-coded progress bars with percentage
+                                labels</li>
+                            <li><strong>Real-time Updates:</strong> Analytics that reflect current learning status</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-pen-fancy"></i> 5. AI Quiz Generator</h4>
+                        <ul>
+                            <li><strong>Automatic Quiz Creation:</strong> Generates practice quizzes from course
+                                lectures</li>
+                            <li><strong>Interactive Quiz Interface:</strong> Multiple-choice questions with clickable
+                                options</li>
+                            <li><strong>Course-Specific Quizzes:</strong> Tailored questions based on enrolled courses
+                            </li>
+                            <li><strong>Visual Quiz Design:</strong> Attractive quiz cards with styled buttons</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-search"></i> 6. AI Learning Gap Analyzer</h4>
+                        <ul>
+                            <li><strong>Course Selection:</strong> Choose from Python for Data Science, Web Development,
+                                or Machine Learning Fundamentals</li>
+                            <li><strong>Topic Input:</strong> Students can list topics they've already studied</li>
+                            <li><strong>Gap Identification:</strong> AI analyzes and identifies missing knowledge areas,
+                                including:
+                                <ul>
+                                    <li>Data Structures (Arrays, Linked Lists, Dictionaries)</li>
+                                    <li>Object-Oriented Programming concepts</li>
+                                    <li>Error Handling and Exception Management</li>
+                                    <li>Data Manipulation tools (Pandas, NumPy)</li>
+                                    <li>Responsive Design and CSS Grid/Flexbox</li>
+                                    <li>JavaScript ES6+ Features</li>
+                                    <li>API Integration and RESTful Services</li>
+                                    <li>Neural Network Architecture</li>
+                                    <li>Model Evaluation and Hyperparameter Tuning</li>
+                                    <li>And many more based on course selection</li>
+                                </ul>
+                            </li>
+                            <li><strong>Real-World Applications:</strong> For each identified gap, the AI provides:
+                                <ul>
+                                    <li>Industry use cases and examples</li>
+                                    <li>Practical applications in real-world scenarios</li>
+                                    <li>Career relevance and importance</li>
+                                    <li>Specific examples from e-commerce, healthcare, finance, and other industries
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><strong>Visual Results Display:</strong> Organized cards with icons, descriptions, and
+                                example lists</li>
+                            <li><strong>Processing Animation:</strong> Button state changes during analysis ("Analyzing
+                                Skills...")</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-map-signs"></i> 7. AI Career Path Planner</h4>
+                        <ul>
+                            <li><strong>Career Goal Input:</strong> Students can describe their desired career path</li>
+                            <li><strong>Experience Level Selection:</strong> Beginner, Intermediate, or Advanced</li>
+                            <li><strong>13 Supported Career Paths:</strong>
+                                <ol>
+                                    <li><strong>Software Developer/Engineer:</strong> Programming, problem solving,
+                                        software design</li>
+                                    <li><strong>Web Developer:</strong> Frontend, backend, or full-stack development
+                                    </li>
+                                    <li><strong>Mobile App Developer:</strong> Android, iOS, or cross-platform
+                                        development</li>
+                                    <li><strong>Machine Learning Engineer:</strong> ML models, data handling,
+                                        mathematics</li>
+                                    <li><strong>Artificial Intelligence Engineer:</strong> AI concepts, neural networks,
+                                        intelligent systems</li>
+                                    <li><strong>Data Scientist:</strong> Data analysis, statistics, visualization</li>
+                                    <li><strong>Data Analyst:</strong> Data cleaning, reporting, insights</li>
+                                    <li><strong>Cloud Engineer:</strong> Cloud platforms, infrastructure management</li>
+                                    <li><strong>Cybersecurity Analyst:</strong> Security, risk analysis, network
+                                        protection</li>
+                                    <li><strong>DevOps Engineer:</strong> Automation, deployment, monitoring</li>
+                                    <li><strong>Game Developer:</strong> Game logic, graphics, game engines</li>
+                                    <li><strong>UI/UX Designer:</strong> Design thinking, usability, user experience
+                                    </li>
+                                    <li><strong>IT Project Manager:</strong> Planning, coordination, leadership</li>
+                                </ol>
+                            </li>
+                            <li><strong>Personalized Course Recommendations:</strong> For each career path, the AI
+                                suggests:
+                                <ul>
+                                    <li>Core skills required</li>
+                                    <li>7-8 specific courses tailored to the career</li>
+                                    <li>Course duration based on experience level (4-12 weeks)</li>
+                                    <li>Numbered course sequence for optimal learning path</li>
+                                </ul>
+                            </li>
+                            <li><strong>Keyword Matching:</strong> Intelligent matching of user input to career paths
+                            </li>
+                            <li><strong>Visual Career Cards:</strong> Attractive display with badges, skill tags, and
+                                course recommendations</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-detail">
+                        <h4><i class="fas fa-graduation-cap"></i> 8. Academic Learning Theory Integration</h4>
+                        <ul>
+                            <li><strong>Self-Regulated Learning (SRL):</strong> AI tools empower students to control
+                                their learning</li>
+                            <li><strong>Personalized Learning Paths:</strong> Zone of Proximal Development unique to
+                                each learner</li>
+                            <li><strong>Data-Driven Analytics:</strong> Immediate, automated feedback on progress</li>
+                            <li><strong>Educational Research Foundation:</strong> Based on proven learning theories and
+                                methodologies</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Technical Details -->
+                <div class="about-section">
+                    <h3><i class="fas fa-code"></i> Technical Implementation</h3>
+                    <ul>
+                        <li><strong>Frontend Technologies:</strong>
+                            <ul>
+                                <li>HTML5 for semantic structure</li>
+                                <li>CSS3 with modern features (CSS Variables, Flexbox, Grid, Gradients, Animations)</li>
+                                <li>Vanilla JavaScript for interactivity and dynamic content</li>
+                                <li>Font Awesome 6.4.0 for comprehensive icon library</li>
+                            </ul>
+                        </li>
+                        <li><strong>Design Features:</strong>
+                            <ul>
+                                <li>Responsive design with mobile-first approach</li>
+                                <li>Modern UI with gradient backgrounds and glassmorphism effects</li>
+                                <li>Smooth animations and transitions</li>
+                                <li>Hover effects and interactive elements</li>
+                                <li>Color-coded badges and status indicators</li>
+                                <li>Professional typography and spacing</li>
+                            </ul>
+                        </li>
+                        <li><strong>Image Sources:</strong> High-quality images from Unsplash API, each course having a
+                            unique image</li>
+                        <li><strong>Data Management:</strong> JavaScript-based mock data structure for courses and
+                            career paths</li>
+                        <li><strong>Navigation System:</strong> Single-page application with section-based navigation
+                        </li>
+                        <li><strong>Mobile Responsiveness:</strong> Burger menu for mobile devices, adaptive layouts
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Course Statistics -->
+                <div class="about-section">
+                    <h3><i class="fas fa-chart-bar"></i> Platform Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4>86+</h4>
+                            <p>Total Courses</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>4</h4>
+                            <p>Course Categories</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>13</h4>
+                            <p>Career Paths Supported</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>24/7</h4>
+                            <p>AI Tutor Availability</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Experience Features -->
+                <div class="about-section">
+                    <h3><i class="fas fa-user-check"></i> User Experience Features</h3>
+                    <ul>
+                        <li><strong>Intuitive Navigation:</strong> Clear menu structure with active state indicators
+                        </li>
+                        <li><strong>Visual Feedback:</strong> Loading states, button animations, and hover effects</li>
+                        <li><strong>Accessibility:</strong> Semantic HTML, proper alt texts, and keyboard navigation
+                            support</li>
+                        <li><strong>Error Handling:</strong> Image fallback mechanisms and empty state messages</li>
+                        <li><strong>Performance:</strong> Lazy loading for images, optimized rendering</li>
+                        <li><strong>Consistent Design Language:</strong> Unified color scheme, typography, and component
+                            styles</li>
+                    </ul>
+                </div>
+
+                <!-- About Section Redesign -->
+                <div class="about-redesign">
+                    <!-- Stats Row -->
+                    <div class="about-stats">
+                        <div class="stat-box">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Active Learners</span>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-divider"></div>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">AI Courses</span>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-divider"></div>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-number">99%</span>
+                            <span class="stat-label">Job Ready</span>
+                        </div>
+                    </div>
+
+                    <div class="about-grid">
+                        <!-- Mission Card -->
+                        <div class="about-card mission-card">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <div class="quote-content">
+                                <p>"To democratize high-quality education by combining the scalability of MOOCs with the
+                                    <strong>hyper-personalization of AI</strong>."
+                                </p>
+                            </div>
+                            <p class="mission-text">We bridge the gap between traditional online courses and one-on-one
+                                mentorship, making elite professional development accessible to everyone, everywhere.
+                            </p>
+                        </div>
+
+                        <!-- Tech Stack Card -->
+                        <div class="about-card tech-card">
+                            <h3><i class="fas fa-layer-group"></i> Powered By</h3>
+                            <div class="tech-icons">
+                                <div class="tech-item" title="Python"><i class="fab fa-python"></i></div>
+                                <div class="tech-item" title="React Architecture"><i class="fab fa-react"></i></div>
+                                <div class="tech-item" title="Deep Learning"><i class="fas fa-brain"></i></div>
+                                <div class="tech-item" title="Cloud Native"><i class="fas fa-cloud"></i></div>
+                            </div>
+                            <ul class="capabilities-list">
+                                <li><i class="fas fa-check"></i> Real-time Progress Tracking</li>
+                                <li><i class="fas fa-check"></i> Contextual AI Response</li>
+                                <li><i class="fas fa-check"></i> Dynamic Career Matching</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 6 & 7. AI Learning Advisor Section -->
+        <section id="advisor" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-magic"></i> AI Learning Advisor</h2>
+                <p>Personalized guidance powered by AI to bridge your skill gaps and plan your career.</p>
+            </div>
+
+            <div class="advisor-container-redesign">
+                <!-- Wizard Navigation / Tabs -->
+                <div class="advisor-tabs">
+                    <button class="advisor-tab active" onclick="switchAdvisorTab('gap')"><i class="fas fa-search"></i>
+                        Gap Analyzer</button>
+                    <button class="advisor-tab" onclick="switchAdvisorTab('career')"><i class="fas fa-map-signs"></i>
+                        Career Planner</button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="advisor-content-wrapper">
+
+                    <!-- Tab 1: Learning Gap Analyzer -->
+                    <div id="tab-gap" class="advisor-tab-content active">
+                        <div class="wizard-card glass-panel">
+                            <div class="wizard-step">
+                                <div class="step-icon"><i class="fas fa-bullseye"></i></div>
+                                <h3>Identify Knowledge Gaps</h3>
+                                <p>Let AI analyze what you know vs. what you need.</p>
+                            </div>
+
+                            <div class="wizard-form">
+                                <div class="form-group floating-label">
+                                    <select id="gap-course" class="glass-input">
+                                        <option value="" disabled selected>Select a target course...</option>
+                                        <option value="python">Python for Data Science</option>
+                                        <option value="web">Web Development</option>
+                                        <option value="ml">Machine Learning Fundamentals</option>
+                                    </select>
+                                    <label>Target Course</label>
+                                </div>
+                                <div class="form-group floating-label">
+                                    <input type="text" id="gap-topics" class="glass-input" placeholder=" ">
+                                    <label>Topics you already know (comma separated)</label>
+                                </div>
+                                <button class="btn btn-glow" onclick="simulateGapAnalysis()">
+                                    <span class="btn-text">Analyze My Skills</span>
+                                    <span class="btn-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
+                                </button>
+                            </div>
+
+                            <div id="gap-results" class="results-area hidden glass-results">
+                                <div class="scanning-line"></div>
+                                <h4><i class="fas fa-clipboard-check"></i> Analysis Complete</h4>
+                                <div class="gap-tags" id="gap-list">
+                                    <!-- Dynamic Tags -->
+                                </div>
+
+                                <div class="real-world-suggestions">
+                                    <h5><i class="fas fa-lightbulb"></i> Industry Application</h5>
+                                    <div id="real-world-content" class="carousel-container">
+                                        <!-- Dynamic Content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Career Path Planner -->
+                    <div id="tab-career" class="advisor-tab-content">
+                        <div class="wizard-card glass-panel dark-mode-accent">
+                            <div class="wizard-step">
+                                <div class="step-icon"><i class="fas fa-road"></i></div>
+                                <h3>Design Your Future</h3>
+                                <p>Get a tailored roadmap to your dream job.</p>
+                            </div>
+
+                            <div class="wizard-form">
+                                <div class="form-group floating-label">
+                                    <input type="text" id="career-goal" class="glass-input" placeholder=" ">
+                                    <label>Dream Job Title (e.g. Data Scientist)</label>
+                                </div>
+                                <div class="form-group floating-label">
+                                    <select id="career-level" class="glass-input">
+                                        <option value="beginner">Beginner (0-1 years)</option>
+                                        <option value="intermediate">Intermediate (2-4 years)</option>
+                                        <option value="advanced">Advanced (5+ years)</option>
+                                    </select>
+                                    <label>Current Experience</label>
+                                </div>
+                                <button class="btn btn-glow secondary" onclick="simulateCareerPlan()">
+                                    <span class="btn-text">Generate Roadmap</span>
+                                    <span class="btn-icon"><i class="fas fa-rocket"></i></span>
+                                </button>
+                            </div>
+
+                            <div id="career-results" class="results-area hidden glass-results">
+                                <!-- Dynamic Roadmap -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AI-MOOC Platform Demo. Built for Academic Presentation.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
