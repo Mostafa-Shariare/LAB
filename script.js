@@ -157,7 +157,7 @@ function renderCourses(filterCategory = 'All') {
                         </div>
                         <small>${course.progress}% Complete</small>
                     </div>
-                    <button class="btn btn-primary" style="width:100%">Enroll Now</button>
+                    <button class="btn btn-primary" style="width:100%">Enroll Now<span class="btn-effect"></span></button>
                 </div>
             `;
             container.appendChild(card);
@@ -170,7 +170,7 @@ function renderCourses(filterCategory = 'All') {
             dashItem.innerHTML = `
                 <span><strong>${course.title}</strong></span>
                 <span>${course.progress}%</span>
-                <button class="btn-primary btn" style="padding: 5px 10px; font-size: 0.8rem">Continue</button>
+                <button class="btn-primary btn" style="padding: 5px 10px; font-size: 0.8rem">Continue<span class="btn-effect"></span></button>
             `;
             dashboardList.appendChild(dashItem);
         }
@@ -331,7 +331,7 @@ function simulateGapAnalysis() {
 
         // Show Results
         results.classList.remove('hidden');
-        btn.innerHTML = `<span class="btn-text">Analysis Complete</span><span class="btn-icon"><i class="fas fa-check"></i></span>`;
+        btn.innerHTML = `<span class="btn-text">Analysis Complete</span><span class="btn-icon"><i class="fas fa-check"></i></span><span class="btn-effect"></span>`;
         btn.disabled = false;
 
         // Reset button after delay
@@ -513,6 +513,7 @@ function simulateCareerPlan() {
         // Step 1: Foundation
         roadmapHTML += `
             <div class="roadmap-step">
+                <div class="timeline-dot"></div>
                 <h5>Step 1: Build Strong Foundations</h5>
                 <p>Master Core Concepts: ${pathData.coreSkills ? pathData.coreSkills[0] : 'Programming Basics'}</p>
             </div>
@@ -521,6 +522,7 @@ function simulateCareerPlan() {
         // Step 2: Specialization
         roadmapHTML += `
             <div class="roadmap-step">
+                <div class="timeline-dot"></div>
                 <h5>Step 2: Specialized Skills</h5>
                 <p>Advanced Topics: ${pathData.coreSkills ? pathData.coreSkills[1] : 'Advanced Functions'}</p>
             </div>
@@ -529,6 +531,7 @@ function simulateCareerPlan() {
         // Step 3: Recommended Courses (Dynamic)
         roadmapHTML += `
             <div class="roadmap-step">
+                <div class="timeline-dot"></div>
                 <h5>Step 3: Recommended Courses</h5>
                 <div class="mini-course-list">
                     ${pathData.courses.slice(0, 3).map(c => `
@@ -548,7 +551,7 @@ function simulateCareerPlan() {
         `;
 
         results.classList.remove('hidden');
-        btn.innerHTML = `<span class="btn-text">Roadmap Generated</span><span class="btn-icon"><i class="fas fa-check"></i></span>`;
+        btn.innerHTML = `<span class="btn-text">Roadmap Generated</span><span class="btn-icon"><i class="fas fa-check"></i></span><span class="btn-effect"></span>`;
         btn.disabled = false;
 
         setTimeout(() => {
