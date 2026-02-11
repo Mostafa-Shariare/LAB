@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-MOOC | Next-Gen Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i> AI-MOOC
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
+                <li><a href="features.html">AI Features</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="advisor.html">AI Advisor</a></li>
+                <li><a href="about.html">About</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- 2. Courses Page Section -->
+        <section id="courses" class="content-section active">
+            <div class="section-header">
+                <h2>Explore Our Courses</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Programming</button>
+                    <button class="filter-btn">Data Science</button>
+                    <button class="filter-btn">AI & ML</button>
+                    <button class="filter-btn">Soft Skills</button>
+                </div>
+            </div>
+            <div class="course-grid" id="course-container">
+                <!-- Course Cards injected by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AI-MOOC Platform Demo. Built for Academic Presentation.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

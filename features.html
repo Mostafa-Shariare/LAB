@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-MOOC | Next-Gen Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i> AI-MOOC
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="features.html" class="active">AI Features</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="advisor.html">AI Advisor</a></li>
+                <li><a href="about.html">About</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- 3. AI Features Page Section -->
+        <section id="features" class="content-section active">
+            <div class="section-header">
+                <h2>AI-Powered Learning Tools</h2>
+            </div>
+            <div class="features-container">
+                <!-- AI Tutor Chat UI -->
+                <div class="feature-card chat-box">
+                    <h3><i class="fas fa-robot"></i> AI Tutor Chat</h3>
+                    <div class="chat-display" id="chat-display">
+                        <div class="msg bot">Hello! I'm your AI Tutor. How can I help you with your studies today?</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chat-input" placeholder="Ask a question about Python...">
+                        <button onclick="sendMockMessage()"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+
+                <!-- Learning Analytics -->
+                <div class="feature-card analytics">
+                    <h3><i class="fas fa-chart-line"></i> Learning Analytics</h3>
+                    <div class="chart-mock">
+                        <div class="bar-container">
+                            <label>Weekly Progress</label>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div class="bar-container">
+                            <label>Quiz Accuracy</label>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 72%;">72%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Quiz Generator -->
+                <div class="feature-card quiz-mock">
+                    <h3><i class="fas fa-pen-fancy"></i> AI Quiz Generator</h3>
+                    <p>Generate a practice quiz from your last lecture.</p>
+                    <div class="quiz-box">
+                        <p class="question">Q: What is the main purpose of a Neural Network?</p>
+                        <button class="quiz-opt">Data Storage</button>
+                        <button class="quiz-opt">Pattern Recognition</button>
+                    </div>
+                </div>
+
+                <!-- AI Code Reviewer -->
+                <div class="feature-card code-review">
+                    <h3><i class="fas fa-bug"></i> AI Code Reviewer</h3>
+                    <p>Get instant feedback on your code quality and potential bugs.</p>
+                    <div class="code-preview">
+                        <div class="code-line">def calculate_sum(a, b):</div>
+                        <div class="code-line error-line"> return a + b <span class="error-annotation"><i
+                                    class="fas fa-exclamation-circle"></i> Type hinting recommended</span></div>
+                    </div>
+                </div>
+
+                <!-- Smart Study Schedule -->
+                <div class="feature-card schedule">
+                    <h3><i class="fas fa-calendar-alt"></i> Smart Study Schedule</h3>
+                    <p>AI-optimized learning plan based on your availability.</p>
+                    <div class="schedule-mock">
+                        <div class="schedule-item active">
+                            <div class="time">10:00 AM</div>
+                            <div class="task">Python Basics</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="time">02:00 PM</div>
+                            <div class="task">Data Structures</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Style Assessment -->
+                <div class="feature-card learning-style">
+                    <h3><i class="fas fa-brain"></i> Style Assessment</h3>
+                    <p>Adapts content to your preferred learning style.</p>
+                    <div class="style-chart">
+                        <div class="style-bar visual" style="width: 70%"><span>Visual 70%</span></div>
+                        <div class="style-bar auditory" style="width: 45%"><span>Auditory 45%</span></div>
+                        <div class="style-bar kinesthetic" style="width: 80%"><span>Kinesthetic 80%</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AI-MOOC Platform Demo. Built for Academic Presentation.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

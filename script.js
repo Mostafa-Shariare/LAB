@@ -109,38 +109,15 @@ const courses = [
     { title: "React & Modern JS", instructor: "Sara Veras", progress: 0, category: "Programming", icon: "fab fa-js", image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=250&fit=crop" }
 ];
 
-// --- Navigation Logic ---
-function showSection(sectionId) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(section => section.classList.remove('active'));
-
-    // Show target section
-    document.getElementById(sectionId).classList.add('active');
-
-    // Update Nav Link Active State
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('onclick').includes(sectionId)) {
-            link.classList.add('active');
-        }
-    });
-
-    // Close mobile menu if open
-    const navItems = document.querySelector('.nav-links');
-    if (window.innerWidth <= 768) {
-        navItems.style.display = 'none';
-    }
-}
-
 // --- Render Courses ---
 function renderCourses(filterCategory = 'All') {
     const container = document.getElementById('course-container');
     const dashboardList = document.getElementById('enrolled-list');
 
-    container.innerHTML = '';
-    dashboardList.innerHTML = '';
+    if (!container && !dashboardList) return;
+
+    if (container) container.innerHTML = '';
+    if (dashboardList) dashboardList.innerHTML = '';
 
     // Filter courses based on category
     const filteredCourses = filterCategory === 'All'
@@ -148,7 +125,7 @@ function renderCourses(filterCategory = 'All') {
         : courses.filter(course => course.category === filterCategory);
 
     // Show empty state if no courses match
-    if (filteredCourses.length === 0) {
+    if (filteredCourses.length === 0 && container) {
         container.innerHTML = `
             <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
                 <i class="fas fa-search" style="font-size: 3rem; color: var(--gray); margin-bottom: 1rem;"></i>
@@ -160,32 +137,34 @@ function renderCourses(filterCategory = 'All') {
 
     filteredCourses.forEach(course => {
         // Render Course Page Cards
-        const card = document.createElement('div');
-        card.className = 'course-card';
-        card.innerHTML = `
-            <div class="course-img">
-                <img src="${course.image}" alt="${course.title}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/4f46e5/ffffff?text=' + encodeURIComponent('${course.title}');">
-                <div class="course-img-overlay">
-                    <i class="${course.icon}"></i>
-                </div>
-                <span class="category-badge">${course.category}</span>
-            </div>
-            <div class="course-info">
-                <h3>${course.title}</h3>
-                <p>Instructor: ${course.instructor}</p>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${course.progress}%"></div>
+        if (container) {
+            const card = document.createElement('div');
+            card.className = 'course-card';
+            card.innerHTML = `
+                <div class="course-img">
+                    <img src="${course.image}" alt="${course.title}" loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x250/4f46e5/ffffff?text=' + encodeURIComponent('${course.title}');">
+                    <div class="course-img-overlay">
+                        <i class="${course.icon}"></i>
                     </div>
-                    <small>${course.progress}% Complete</small>
+                    <span class="category-badge">${course.category}</span>
                 </div>
-                <button class="btn btn-primary" style="width:100%">Enroll Now</button>
-            </div>
-        `;
-        container.appendChild(card);
+                <div class="course-info">
+                    <h3>${course.title}</h3>
+                    <p>Instructor: ${course.instructor}</p>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${course.progress}%"></div>
+                        </div>
+                        <small>${course.progress}% Complete</small>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%">Enroll Now</button>
+                </div>
+            `;
+            container.appendChild(card);
+        }
 
         // Render Dashboard Items (only if progress > 0)
-        if (course.progress > 0) {
+        if (dashboardList && course.progress > 0) {
             const dashItem = document.createElement('div');
             dashItem.className = 'enrolled-item';
             dashItem.innerHTML = `
@@ -203,6 +182,7 @@ function sendMockMessage() {
     const input = document.getElementById('chat-input');
     const display = document.getElementById('chat-display');
 
+    if (!input || !display) return;
     if (input.value.trim() === "") return;
 
     // User Message
@@ -248,14 +228,18 @@ function filterCourses(category) {
 
 // --- Initialize ---
 window.onload = () => {
+    // Attempt to render courses if we are on courses or dashboard page
     renderCourses();
 
-    // Add event listeners to filter buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterCourses(btn.textContent.trim());
+    // Add event listeners to filter buttons if they exist
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterCourses(btn.textContent.trim());
+            });
         });
-    });
+    }
 };
 
 // --- Simple Mobile Menu Toggle ---
@@ -279,7 +263,7 @@ function switchAdvisorTab(tabId) {
     // Buttons
     document.querySelectorAll('.advisor-tab').forEach(btn => {
         btn.classList.remove('active');
-        if (btn.getAttribute('onclick').includes(tabId)) {
+        if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)) {
             btn.classList.add('active');
         }
     });
@@ -288,7 +272,8 @@ function switchAdvisorTab(tabId) {
     document.querySelectorAll('.advisor-tab-content').forEach(content => {
         content.classList.remove('active');
     });
-    document.getElementById(`tab-${tabId}`).classList.add('active');
+    const targetTab = document.getElementById(`tab-${tabId}`);
+    if (targetTab) targetTab.classList.add('active');
 }
 
 function simulateGapAnalysis() {
@@ -296,11 +281,14 @@ function simulateGapAnalysis() {
     const gapList = document.getElementById('gap-list');
     const realWorldContent = document.getElementById('real-world-content');
     const btn = event.currentTarget; // Use currentTarget for button with icon
-    const selectedCourse = document.getElementById('gap-course').value;
+    const select = document.getElementById('gap-course');
+
+    if (!select || !results || !gapList || !realWorldContent) return;
+
+    const selectedCourse = select.value;
 
     if (!selectedCourse) {
         // Simple visual feedback for missing input
-        const select = document.getElementById('gap-course');
         select.style.borderColor = '#ef4444';
         setTimeout(() => select.style.borderColor = 'transparent', 2000);
         return;
@@ -798,7 +786,7 @@ function getCareerPathsData() {
         {
             title: "IT Project Manager",
             icon: "fa-tasks",
-            keywords: ["project manager", "it project manager", "pm", "project management", "scrum", "agile"],
+            keywords: ["it project manager", "project manager", "pm", "management"],
             coreSkills: ["Planning", "Coordination", "Leadership"],
             courses: [
                 "IT Project Management Fundamentals",
@@ -811,13 +799,3 @@ function getCareerPathsData() {
         }
     ];
 }
-
-// --- Smart Study Schedule Interactivity ---
-document.querySelectorAll('.schedule-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // Remove active class from all
-        document.querySelectorAll('.schedule-item').forEach(i => i.classList.remove('active'));
-        // Add to clicked
-        item.classList.add('active');
-    });
-});

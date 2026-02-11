@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-MOOC | Next-Gen Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-brain"></i> AI-MOOC
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="features.html">AI Features</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="advisor.html" class="active">AI Advisor</a></li>
+                <li><a href="about.html">About</a></li>
+
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+
+        <!-- 6 & 7. AI Learning Advisor Section -->
+        <section id="advisor" class="content-section active">
+            <div class="section-header">
+                <h2><i class="fas fa-magic"></i> AI Learning Advisor</h2>
+                <p>Personalized guidance powered by AI to bridge your skill gaps and plan your career.</p>
+            </div>
+
+            <div class="advisor-container-redesign">
+                <!-- Wizard Navigation / Tabs -->
+                <div class="advisor-tabs">
+                    <button class="advisor-tab active" onclick="switchAdvisorTab('gap')"><i class="fas fa-search"></i>
+                        Gap Analyzer</button>
+                    <button class="advisor-tab" onclick="switchAdvisorTab('career')"><i class="fas fa-map-signs"></i>
+                        Career Planner</button>
+                </div>
+
+                <!-- Content Area -->
+                <div class="advisor-content-wrapper">
+
+                    <!-- Tab 1: Learning Gap Analyzer -->
+                    <div id="tab-gap" class="advisor-tab-content active">
+                        <div class="wizard-card glass-panel">
+                            <div class="wizard-step">
+                                <div class="step-icon"><i class="fas fa-bullseye"></i></div>
+                                <h3>Identify Knowledge Gaps</h3>
+                                <p>Let AI analyze what you know vs. what you need.</p>
+                            </div>
+
+                            <div class="wizard-form">
+                                <div class="form-group floating-label">
+                                    <select id="gap-course" class="glass-input">
+                                        <option value="" disabled selected>Select a target course...</option>
+                                        <option value="python">Python for Data Science</option>
+                                        <option value="web">Web Development</option>
+                                        <option value="ml">Machine Learning Fundamentals</option>
+                                    </select>
+                                    <label>Target Course</label>
+                                </div>
+                                <div class="form-group floating-label">
+                                    <input type="text" id="gap-topics" class="glass-input" placeholder=" ">
+                                    <label>Topics you already know (comma separated)</label>
+                                </div>
+                                <button class="btn btn-glow" onclick="simulateGapAnalysis()">
+                                    <span class="btn-text">Analyze My Skills</span>
+                                    <span class="btn-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
+                                </button>
+                            </div>
+
+                            <div id="gap-results" class="results-area hidden glass-results">
+                                <div class="scanning-line"></div>
+                                <h4><i class="fas fa-clipboard-check"></i> Analysis Complete</h4>
+                                <div class="gap-tags" id="gap-list">
+                                    <!-- Dynamic Tags -->
+                                </div>
+
+                                <div class="real-world-suggestions">
+                                    <h5><i class="fas fa-lightbulb"></i> Industry Application</h5>
+                                    <div id="real-world-content" class="carousel-container">
+                                        <!-- Dynamic Content -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Career Path Planner -->
+                    <div id="tab-career" class="advisor-tab-content">
+                        <div class="wizard-card glass-panel dark-mode-accent">
+                            <div class="wizard-step">
+                                <div class="step-icon"><i class="fas fa-road"></i></div>
+                                <h3>Design Your Future</h3>
+                                <p>Get a tailored roadmap to your dream job.</p>
+                            </div>
+
+                            <div class="wizard-form">
+                                <div class="form-group floating-label">
+                                    <input type="text" id="career-goal" class="glass-input" placeholder=" ">
+                                    <label>Dream Job Title (e.g. Data Scientist)</label>
+                                </div>
+                                <div class="form-group floating-label">
+                                    <select id="career-level" class="glass-input">
+                                        <option value="beginner">Beginner (0-1 years)</option>
+                                        <option value="intermediate">Intermediate (2-4 years)</option>
+                                        <option value="advanced">Advanced (5+ years)</option>
+                                    </select>
+                                    <label>Current Experience</label>
+                                </div>
+                                <button class="btn btn-glow secondary" onclick="simulateCareerPlan()">
+                                    <span class="btn-text">Generate Roadmap</span>
+                                    <span class="btn-icon"><i class="fas fa-rocket"></i></span>
+                                </button>
+                            </div>
+
+                            <div id="career-results" class="results-area hidden glass-results">
+                                <!-- Dynamic Roadmap -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AI-MOOC Platform Demo. Built for Academic Presentation.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
